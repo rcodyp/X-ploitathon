@@ -413,6 +413,18 @@ input[type="radio"].toggle:checked + label {
 .glitch__img_leaderboard {
     position: fixed!important;
     background: url(../images/hackerborad.jpg)!important;
+    background-size: cover !important;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    .glitch__img_leaderboard {
+        background: url(../images/hackerboard-mobile.png) no-repeat center center !important;
+        background-size: cover !important;
+    }
 }
 
 .glitch__img_register {
