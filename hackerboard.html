@@ -1,133 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head></head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>X'ploitathon CTF</title>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>X'ploitathon CTF</title>
 
-<link rel="icon" href="images/fav.png" type="image/x-icon">
+    <link rel="icon" href="images/fav.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-<link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<link rel="stylesheet" href="css/main.css">
-<style>
-    .team-card {
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        border-radius: 10px;
-        z-index: 10;
-        position: relative;
-        transition: all 0.3s ease-in-out;
-        margin-top: 20px;
-    }
+    <style>
+        .team-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 10px;
+            z-index: 10;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            margin-top: 20px;
+        }
 
-    .team-name {
-        font-size: 1.5rem;
-        font-weight: 600;
-    }
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
 
-    .team-points {
-        font-size: 1.5rem;
-        color: #ff0000;
-        font-weight: 700;
-        text-align: right;
-    }
+        .team-points {
+            font-size: 1.5rem;
+            color: #ff0000;
+            font-weight: 700;
+            text-align: right;
+        }
 
-    .team-details {
-        padding-top: 10px;
-    }
+        .team-details {
+            padding-top: 10px;
+        }
 
-    .card-body {
-        background-color: transparent;
-        /* Ensure no overlapping background */
-    }
+        .card-body {
+            background-color: transparent;
+        }
 
-    .team-details {
-        margin-top: 10px;
-    }
+        .team-details {
+            margin-top: 10px;
+        }
 
-    .file-link {
-        display: inline-block;
-        padding: 10px 20px;
-        margin: 5px;
-        font-size: 16px;
-        color: #fff;
-        background-color: #6bea03;
-        text-decoration: none;
-        border-radius: 5px;
-    }
+        .file-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #6bea03;
+            text-decoration: none;
+            border-radius: 5px;
+        }
 
-    .file-link:hover {
-        background-color: #34630b;
-    }
+        .file-link:hover {
+            background-color: #34630b;
+        }
 
-    .jumbotron {
-        z-index: 1;
-        position: relative;
-    }
+        .jumbotron {
+            z-index: 1;
+            position: relative;
+        }
 
-    .glitch__img {
-        z-index: -1;
-        /* Push the background behind the content */
-    }
+        .glitch__img {
+            z-index: -1;
+        }
 
-    .card-header {
-        cursor: pointer;
-        /* Make the card header clickable */
-        background-color: rgba(255, 255, 255, 0.1);
-        /* Add some styling to the header */
-        padding: 15px;
-    }
+        .card-header {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+        }
 
-    .card-header:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
+        .card-header:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
-    /* Transition effect for the collapse */
-    .collapse {
-        transition: height 0.3s ease-out;
-        /* Smooth slide-down effect *
-}
+        .collapse {
+            transition: height 0.3s ease-out;
+        }
 
-.card-body {
-    background-color: transparent; /* Different background for the details */
-        padding: 15px;
-    }
+        .card-body {
+            background-color: transparent;
+            padding: 15px;
+        }
 
-    .download-button {
-        display: inline-block;
-        padding: 10px 20px;
-        margin: 5px;
-        font-size: 16px;
-        color: #fff;
-        background-color: #900e0e;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-decoration: none;
-    }
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px 0;
+            font-size: 16px;
+            color: #fff;
+            background-color: #900e0e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-    .download-button:hover {
-        background-color: #ff0000;
-    }
-</style>
+        .download-button:hover {
+            background-color: #ff0000;
+        }
+
+        /* New challenge section */
+        .challenge-section {
+            margin: 40px auto;
+            max-width: 1100px;
+        }
+
+        .challenge-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .challenge-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .challenge-riddle {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+    </style>
 </head>
 
-<!-- <body class="imgloaded">
-    <div class="glitch">
-        <div class="glitch__img glitch__img_leaderboard"></div>
-        <div class="glitch__img glitch__img_leaderboard"></div>
-        <div class="glitch__img glitch__img_leaderboard"></div>
-        <div class="glitch__img glitch__img_leaderboard"></div>
-        <div class="glitch__img glitch__img_leaderboard"></div>
-    </div>
+<body>
     <div class="navbar-dark text-white">
         <div class="container">
             <nav class="navbar px-0 navbar-expand-lg navbar-dark">
@@ -146,27 +159,178 @@
         </div>
     </div>
 
+    <!-- Challenge Section -->
+    <div class="container challenge-section">
+        <h2 class="text-center mb-4">CTF Challenges</h2>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 1: Trace the Signal</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge1">Open</button>
+            </div>
+            <div id="challenge1" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    "I’m all about short films, yet I never roll tape.
+                    My name drowses with three z’s in a row—zzz.
+                    Two shy dots peek out like little eyes.
+                    Find the secret in clipzzz_._
+                    Tell me: what kind of place might hide a name like that?"
+                </div>
+                <a href="../X-ploitathon/repo/TRACE THE SIGNAL.jpg" class="download-button" download>Download</a>
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 2: Profile Picture Sleuth</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge2">Open</button>
+            </div>
+            <div id="challenge2" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    "I’m all about short films, yet I never roll tape.
+                    My name drowses with three z’s in a row—zzz.
+                    Two shy dots peek out like little eyes.
+                    Find the secret in clipzzz_._
+                    Tell me: what kind of place might hide a name like that?"
+
+                </div>
+                <a href="../X-ploitathon/repo/ProfilePictureSleuth.jpg" class="download-button" download>Download</a> 
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 3: Where in the World </div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge3">Open</button>
+            </div>
+            <div id="challenge3" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    Description:
+                    "the participants will be provided with an image of a monument.
+                    to solve the problem they must identify the country in which it is located"
+                </div>
+                <a href="../X-ploitathon/repo/WhereintheWorld.jpg" class="download-button" download>Download</a>
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 4: Identity Hunt</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge4">Open</button>
+            </div>
+            <div id="challenge4" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    Description:
+                    "Participants are given a single post by an influencer. The task is to use open source intelligence
+                    techniques to identify the real name of the influencer behind that single online post."
+                </div>
+                <a href="../X-ploitathon/repo/Identi_Hust.jpg" class="download-button" download>Download App</a>
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 5: Math Challenge Vault</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge5">Open</button>
+            </div>
+            <div id="challenge5" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    "You've discovered a mysterious math challenge application that claims to protect valuable secrets.
+                    The app presents you with a simple arithmetic problem, but there's more than meets the eye. Can you
+                    solve the puzzle and uncover the hidden treasure that reveals itself only to those who prove their
+                    mathematical prowess? Remember, sometimes the most valuable information isn't displayed on
+                    screen..."
+                </div>
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 6: Modbus Mystery</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge6">Open</button>
+            </div>
+            <div id="challenge6" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    A voice cried out inside your head,
+                    Its answer came in some six-tee-four instead.
+                    “Listen well to five-oh-two,
+                    The hidden flag is waiting for you.”
+                </div>
+                <!-- <a href="" class="download-button" download>Download App</a> -->
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 7: The Smuggler’s Crate</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge7">Open</button>
+            </div>
+            <div id="challenge7" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    "We see nothing but a picture rum barrels, but the quartermaster says there's more to this cargo
+                    than meets the eye. Is it just a picture of a crate... or is it the crate itself?"
+                </div>
+                <!-- <a href="" class="download-button" download>Download App</a> -->
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 8: Davy Jones' Locker</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge8">Open</button>
+            </div>
+            <div id="challenge8" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    "I’m all about short films, yet I never roll tape.
+                    My name drowses with three z’s in a row—zzz.
+                    Two shy dots peek out like little eyes.
+                    Find the secret in clipzzz_._
+                    Tell me: what kind of place might hide a name like that?"
+                </div>
+                <!-- <a href="" class="download-button" download>Download App</a> -->
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 9: The Captain’s Portrait</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge9">Open</button>
+            </div>
+            <div id="challenge9" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    "Every captain's portrait tells a tale, but the real treasure ain't on the canvas. The artist
+                    himself left a note about his work. Look to the scribe's markings, not the brush strokes."
+                </div>
+                <!-- <a href="" class="download-button" download>Download App</a> -->
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="challenge-title">Challenge 10: The Siren’s Song</div>
+                <button class="download-button" data-toggle="collapse" data-target="#challenge10">Open</button>
+            </div>
+            <div id="challenge10" class="collapse mt-3">
+                <div class="challenge-riddle">
+                    "They say the siren's song leads ships to their doom. But for a clever pirate, her voice paints a
+                    map. To find this treasure, you must learn to see the sound and listen with your eyes."
+                </div>
+                <!-- <a href="" class="download-button" download>Download App</a> -->
+            </div>
+        </div>
 
 
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-
-
-</body> -->
-<body>
-    <H1>Wait for a While</H1>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
